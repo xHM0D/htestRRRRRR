@@ -7,8 +7,8 @@ app.get("/", function (req, res) {
 
 app.listen(3000);
 //كود تثبيت حسابك ٢٤ ساعة في روم فويس
-const { Client } = require("discord.js-selfbot-v13");
-const client = new Client(); // All partials are loaded automatically
+const { Client } = require('discord.js-selfbot-v13');
+const client = new Client({checkUpdate:false}); 
 
 setInterval(() => {
   if (!client || !client.user) {
