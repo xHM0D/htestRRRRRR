@@ -16,7 +16,7 @@ setInterval(() => {
     console.log("Restart project");
     process.kill(1);
   }
-}, 1000);
+}, 12000);
 
 client.on("ready", async () => {
   console.log(`${client.user.username} is ready!`);
@@ -37,6 +37,6 @@ client.on("ready", () => {
       .catch((error) => {
         return;
       });
-  }, 1000);
+  }, 12000);
 });
 client.login(process.env.token);
