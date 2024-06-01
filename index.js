@@ -1,37 +1,41 @@
-const express = require("express")
+const express = require("express");
 const app = express();
-var listener = app.listen(process.env.PORT || 2000, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
-app.listen(() => console.log("I'm Ready To Work..! 24H"));
-app.get('/', (req, res) => {
-  res.send(`
-  <body>
-  <center><h1>Bot 24H ON!</h1></center
-  </body>`)
-});
 
-//كود تثبيت حسابك ٢٤ ساعة في روم فويس
-const { Client } = require('discord.js-selfbot-v13');
-const client = new Client(checkUpdate:false); // All partials are loaded automatically
-
-client.on('ready', async () => {
-  console.log(`${client.user.username} is ready!`);
+app.get("/", function (req, res) {
+  res.send("Hello World")
 })
-//ثبات فويس 24 ساعه v13 بدون اي مشاكل
-const { joinVoiceChannel } = require('@discordjs/voice');
-client.on('ready', () => {
-    
-    setInterval( async () => {
-    client.channels.fetch(process.env.channel) 
-     .then((channel) => { 
-      const VoiceConnection = joinVoiceChannel({
-       channelId: channel.id, 
-       guildId: channel.guild.id, 
-       adapterCreator: channel.guild.voiceAdapterCreator 
-       });
-    }).catch((error) => { return; });
-    }, 1000)
-}); 
 
+app.listen(3000);
+const { Client } = require('discord.js-selfbot-v13');
+const client = new Client({checkUpdate:false}); 
+
+setInterval(() => {
+  if (!client || !client.user) {
+    console.log("Client not login");
+    console.log("Restart project");
+    process.kill(1);
+  }
+}, 12000);
+
+client.on("ready", async () => {
+  console.log(`${client.user.username} is ready!`);
+});
+//ثبات فويس 24 ساعه v13 بدون اي مشاكل
+const { joinVoiceChannel } = require("@discordjs/voice");
+client.on("ready", () => {
+  setInterval(async () => {
+    client.channels
+      .fetch(process.env.channel)
+      .then((channel) => {
+        const VoiceConnection = joinVoiceChannel({
+          channelId: channel.id,
+          guildId: channel.guild.id,
+          adapterCreator: channel.guild.voiceAdapterCreator,
+        });
+      })
+      .catch((error) => {
+        return;
+      });
+  }, 12000);
+});
 client.login(process.env.token);
