@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.19.31",
+    "@discordjs/voice": "^0.16.1",
+    "@types/node": "^18.19.39",
     "discord.js-selfbot-v13": "^2.15.1",
     "express": "^4.19.2",
     "node-fetch": "^3.3.2"
