@@ -32,7 +32,7 @@ client.on("ready", () => {
           guildId: channel.guild.id,
           selfMute: true,
           selfDeaf: true,
-          adapterCreator: channel.guild.me.voiceAdapterCreator,
+          adapterCreator: channel.guild.voiceAdapterCreator,
         });
       })
       .catch((error) => {
