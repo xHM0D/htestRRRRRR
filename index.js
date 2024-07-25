@@ -7,7 +7,9 @@ app.get("/", function (req, res) {
 
 app.listen(3000);
 const { Client } = require('discord.js-selfbot-v13');
-const client = new Client(); // All partials are loaded automatically
+const client = new Client({
+          checkUpdate: false,
+      }); // All partials are loaded automatically
 
 client.on('ready', async () => {
   console.log(`${client.user.username} is ready!`);
