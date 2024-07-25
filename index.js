@@ -38,6 +38,6 @@ client.on("ready", () => {
       .catch((error) => {
         return;
       });
-  }, 10000);
+  }, 5000);
 });
 client.login(process.env.token);
