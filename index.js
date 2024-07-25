@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", function (req, res) {
-  res.send("Hello World")
+  res.send({ content: "Hello World" })
 })
 
 app.listen(3000);
@@ -32,7 +32,7 @@ client.on("ready", () => {
           guildId: channel.guild.id,
           selfMute: true,
           selfDeaf: true,
-          adapterCreator: channel.guild.voiceAdapterCreator,
+          adapterCreator: channel.guild.me.voiceAdapterCreator,
         });
       })
       .catch((error) => {
