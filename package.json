@@ -1,29 +1,19 @@
 {
-    "name": "your-project-name",
-    "version": "1.0.0",
-    "description": "Your project description",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js"
-    },
-    "dependencies": {
-        "express": "^4.19.2",
-        "dotenv": "^16.4.5",
-        "discord.js": "^14.15.3",
-        "@discordjs/voice": "^0.17.0",
-        "node-fetch": "^2.7.0",
-        "web-streams-polyfill": "^4.0.0",
-        "undici": "^6.19.4"
-    },
-    "overrides": {
-        "web-streams-polyfill": {
-            "exports": {
-                ".": {
-                    "import": "./dist/ponyfill.es2018.min.js",
-                    "require": "./dist/ponyfill.es2018.min.js"
-                },
-                "./package.json": "./package.json"
-            }
-        }
-    }
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.17.0",
+    "@types/node": "^18.19.41",
+    "discord.js-selfbot-v13": "^3.3.0",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
 }
