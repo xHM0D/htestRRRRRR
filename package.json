@@ -1,19 +1,17 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
+  "name": "24-voice-account",
+  "version": "0.1.0",
+  "description": "24-voice-account",
   "main": "index.js",
   "scripts": {
-  "start": "node index.js" 
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "discord.js-selfbot-v13": "^3.1.4",
     "@discordjs/voice": "^0.17.0",
-    "@types/node": "^18.19.41",
-    "discord.js-selfbot-v13": "^3.3.0",
-    "express": "^4.19.2",
-    "node-fetch": "^3.3.2"
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
