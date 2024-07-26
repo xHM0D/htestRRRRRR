@@ -31,7 +31,9 @@ client.on('ready', () => {
      .then((channel) => { 
       const VoiceConnection = joinVoiceChannel({
        channelId: channel.id, 
-       guildId: channel.guild.id, 
+       guildId: channel.guild.id,
+       selfMute: true,
+       selfDeaf: true, 
        adapterCreator: channel.guild.voiceAdapterCreator 
        });
     }).catch((error) => { return; });
