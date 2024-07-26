@@ -1,13 +1,16 @@
 require("dotenv").config();
 
 const express = require("express");
-const app = express();
+   const app = express();
 
-app.get("/", function (req, res) {
-  res.send("Hello World");
-});
+   app.get("/", function (req, res) {
+       res.send("Hello World");
+   });
 
-app.listen(3000);
+   const PORT = process.env.PORT || 3000;
+   app.listen(PORT, () => {
+       console.log(`Server is running on port ${PORT}`);
+   });
 
 const { Client } = require("discord.js-selfbot-v13");
 const client = new Client({ checkUpdate: false });
