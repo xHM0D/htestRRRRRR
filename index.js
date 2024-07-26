@@ -12,29 +12,23 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-const { Client } = require("discord.js-selfbot-v13");
-const client = new Client({ checkUpdate: false });
+const { Client, GatewayIntentBits } = require("discord.js");
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+});
 
-// ضبط الأحداث المطلوبة
 client.on("debug", console.log);
 client.on("warn", console.warn);
 client.on("error", console.error);
 
-setInterval(() => {
-  if (!client || !client.user) {
-    console.log("Client not login");
-    console.log("Restart project");
-    process.exit(1);
-  }
-}, 1000);
-
 client.on("ready", async () => {
   console.log(`${client.user.username} is ready!`);
-  console.log("token:", process.env.token);
-  console.log("channel:", process.env.channel);
+  console.log("Token:", process.env.token);
+  console.log("Channel:", process.env.channel);
 });
 
 const { joinVoiceChannel } = require("@discordjs/voice");
+
 client.on("ready", () => {
   setInterval(async () => {
     client.channels
