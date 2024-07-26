@@ -1,6 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const { Client, GatewayIntentBits } = require("discord.js");
+const { joinVoiceChannel } = require("@discordjs/voice");
+require("web-streams-polyfill/ponyfill"); // استيراد web-streams-polyfill
+const fetch = require("node-fetch"); // استيراد node-fetch
 
 // إعداد خادم Express
 app.get("/", function (req, res) {
@@ -12,7 +16,6 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-const { Client, GatewayIntentBits } = require("discord.js");
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
 });
@@ -23,17 +26,22 @@ client.on("error", console.error);
 
 client.on("ready", async () => {
   console.log(`${client.user.username} is ready!`);
-  console.log("Token:", process.env.token);
-  console.log("Channel:", process.env.channel);
+  console.log("token:", process.env.token);
+  console.log("channel:", process.env.channel);
 });
 
-const { joinVoiceChannel } = require("@discordjs/voice");
+// هنا يمكن استخدام fetch لجلب البيانات
+fetch("https://api.example.com/data")
+  .then((res) => res.json())
+  .then((json) => console.log(json))
+  .catch((err) => console.error("Error fetching data:", err));
 
 client.on("ready", () => {
   setInterval(async () => {
     client.channels
       .fetch(process.env.channel)
       .then((channel) => {
+        json;
         const VoiceConnection = joinVoiceChannel({
           channelId: channel.id,
           guildId: channel.guild.id,
