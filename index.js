@@ -1,25 +1,24 @@
-require('dotenv').config();
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
-
-client.on('debug', console.log);
-client.on('warn', console.warn);
-client.on('error', console.error);
-
+require("dotenv").config();
 const express = require("express");
-   const app = express();
+const app = express();
 
-   app.get("/", function (req, res) {
-       res.send("Hello World");
-   });
+// إعداد خادم Express
+app.get("/", function (req, res) {
+  res.send("Hello World");
+});
 
-   const PORT = process.env.PORT || 3000;
-   app.listen(PORT, () => {
-       console.log(`Server is running on port ${PORT}`);
-   });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 const { Client } = require("discord.js-selfbot-v13");
 const client = new Client({ checkUpdate: false });
+
+// ضبط الأحداث المطلوبة
+client.on("debug", console.log);
+client.on("warn", console.warn);
+client.on("error", console.error);
 
 setInterval(() => {
   if (!client || !client.user) {
@@ -31,8 +30,8 @@ setInterval(() => {
 
 client.on("ready", async () => {
   console.log(`${client.user.username} is ready!`);
-  console.log("Token:", process.env.token);
-  console.log("Channel:", process.env.channel);
+  console.log("token:", process.env.token);
+  console.log("channel:", process.env.channel);
 });
 
 const { joinVoiceChannel } = require("@discordjs/voice");
